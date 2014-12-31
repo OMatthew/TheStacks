@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUd4z57ZhhXzIDclL6vTSqHW_WY5aKDCY">
+    </script>
+    <script type="text/javascript">
+      var latlng = new google.maps.LatLng(30.2500, -97.7500);
+      var map;
+      var markers = [];
+      var i;
+      var infoWindows = [];
+      function initialize() {
+    
+        var mapOptions = {
+          center: latlng,
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.SATELLITE
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+      }
+  
+    google.maps.event.addDomListener(window, 'load', initialize);
+    
+    function addFavMarker() { 
+        //alert("pushed");
+        //infowindow.open(map,marker);
+        i++;
+        markers[i] = new google.maps.Marker({
+          position: latlng,
+          title: "This is my favorite place",
+          draggable: true,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: "http://maps.google.com/mapfiles/ms/micons/blue.png"
+          
+    });
+        infoWindows[i] = new google.maps.InfoWindow({
+          content: '<div id="content">My favorite place is...' + '<br><form><input type="text"><br></form>' + '</div>'
+        })
+        google.maps.event.addListener(markers[i], 'click', function()
+    {
+
+      infoWindows[i].open(map, markers[i]);
+
+    });
+        infoWindows[i].open(map, markers[i]);
+  }
+
+  function addBetterMarker() { 
+        //alert("pushed");
+        i++;
+        markers[i] = new google.maps.Marker({
+          position: latlng,
+          title: "I want this place to be better",
+          draggable: true,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: "http://maps.google.com/mapfiles/ms/micons/red.png"
+          
+    });
+    infoWindows[i] = new google.maps.InfoWindow({
+          content: "I want this place to be better"
+        })
+        google.maps.event.addListener(markers[i], 'click', function()
+    {
+
+      infoWindows[i].open(map, markers[i]);
+
+    });
+    //map.setCenter(marker.getPosition())
+  }
+
+  function addAboutMarker() { 
+        //alert("pushed");
+        i++;
+        markers[i] = new google.maps.Marker({
+          position: latlng,
+          title: "Tell us about your city",
+          draggable: true,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: "http://maps.google.com/mapfiles/ms/micons/green.png"
+          
+    });
+         infoWindows[i] = new google.maps.InfoWindow({
+          content: "Tell us about your city"
+        })
+        google.maps.event.addListener(markers[i], 'click', function()
+    {
+
+      infoWindows[i].open(map, markers[i]);
+
+    });
+    //map.setCenter(marker.getPosition())
+  }
+
+    
+
+
+     function goToStacks() {
+
+        window.location.href = "http://localhost:8888";
+
+     }
+
+    
+    </script>
+  </head>
+  <body>
+<button onclick = "goToStacks()">The Stacks</button>
+<button onclick = "addFavMarker()">This is my Favorite Place</button>
+<button onclick = "addBetterMarker()">I Want this to be Better</button>
+<button onclick = "addAboutMarker()">Tell us About Your City</button>
+<div id="map-canvas"></div>
+
+  </body>
+</html>
