@@ -23,7 +23,7 @@ $(document).ready(function() {
 				minZoom: 0,
 				mapTypeId: google.maps.MapTypeId.SATELLITE,
 				zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.SMALL //zoom control size
+				//style: google.maps.ZoomControlStyle.SMALL //zoom control size
 			},
 				scaleControl: true, // enable scale control
 				//mapTypeId: google.maps.MapTypeId.ROADMAP // google map type
@@ -183,11 +183,12 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-h1.heading{padding:0px;margin: 0px 0px 10px 0px;text-align:center;font: 18px Georgia, "Times New Roman", Times, serif;}
+h1.heading{padding:0px;margin: 0px 0px 10px 0px;text-align:left;font: 24px; font-family: Sans-Serif;}
 
 /* width and height of google map */
-#google_map {width: 90%; height: 1000px;margin-top:auto;margin-left:auto;margin-right:auto;}
-
+/*#google_map {width: 90%; height: 1000px;margin-top:auto;margin-left:auto;margin-right:auto;}*/
+html, body {width: 94%; height: 97%; font-family: sans-serif; margin-left: auto}
+#google_map {height: 100%; margin-top:auto;margin-left:auto;margin-right:auto;}
 /* Marker Edit form */
 .marker-edit label{display:block;margin-bottom: 5px;}
 .marker-edit label span {width: 100px;float: left;}
@@ -205,8 +206,8 @@ button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 
 </style>
 </head>
 <body>             
-<h1 class="heading">My Google Map</h1>
-<div align="center">Right Click to Drop a New Marker</div>
+<h1 class="heading">The Stacks</h1>
+<div align="left">Leave Your Mark</div>
 <div id="google_map"></div>
 </body>
 </html>

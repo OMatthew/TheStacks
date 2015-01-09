@@ -39,7 +39,7 @@ if($_POST) //run only if there's a post data
 		  header('HTTP/1.1 500 Error: Could not delete Markers!'); 
 		  exit();
 		} 
-		exit("Done!");
+		exit("Marker removed");
 	}
 	
 	$mName 		= filter_var($_POST["name"], FILTER_SANITIZE_STRING);
