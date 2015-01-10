@@ -21,9 +21,12 @@ $(document).ready(function() {
 				zoom: 12, //zoom level, 0 = earth view to higher value
 				maxZoom: 24,
 				minZoom: 0,
+				panControl: false,
 				//mapTypeId: google.maps.MapTypeId.SATELLITE,
 				zoomControlOptions: {
-				//style: google.maps.ZoomControlStyle.SMALL //zoom control size
+
+				//style: google.maps.ZoomControlStyle.SMALL, //zoom control size
+				position: google.maps.ControlPosition.RIGHT
 			},
 				scaleControl: true, // enable scale control
 				mapTypeId: google.maps.MapTypeId.HYBRID // google map type
@@ -62,14 +65,14 @@ $(document).ready(function() {
 			$(document).ready(function() {
 				$("#favBtn").on('click', function(){
 				//Edit form to be displayed with new marker
-				var EditForm = '<p><div class="marker-edit">'+
+				var EditForm = '<div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
-				'<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-				'<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
+				'<label for="pName"><span></span><input type="text" name="pName" class="save-name" placeholder="Title" maxlength="40" /></label>'+
+				'<label for="pDesc"><span></span><textarea name="pDesc" class="save-desc" placeholder="Type your description" maxlength="150"></textarea></label>'+
 				/*'<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
 				'<option value="house">House</option></select></label>'+*/
 				'</form>'+
-				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
+				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
 				create_marker(mapCenter, 'My favorite place is...', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png");
@@ -81,15 +84,15 @@ $(document).ready(function() {
 				//Edit form to be displayed with new marker
 				var EditForm = '<p><div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
-				'<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-				'<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
+				'<label for="pName"><span></span><input type="text" name="pName" class="save-name" placeholder="Title" maxlength="40" /></label>'+
+				'<label for="pDesc"><span></span><textarea name="pDesc" class="save-desc" placeholder="Type your description" maxlength="150"></textarea></label>'+
 				/*'<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
 				'<option value="house">House</option></select></label>'+*/
 				'</form>'+
 				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, 'I want this to be better...', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png");
+				create_marker(mapCenter, 'I want this to be better...', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/blue.png");
 				});
 			});
 
@@ -98,15 +101,15 @@ $(document).ready(function() {
 				//Edit form to be displayed with new marker
 				var EditForm = '<p><div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
-				'<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-				'<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
+				'<label for="pName"><span></span><input type="text" name="pName" class="save-name" placeholder="Title" maxlength="40" /></label>'+
+				'<label for="pDesc"><span></span><textarea name="pDesc" class="save-desc" placeholder="Type your description" maxlength="150"></textarea></label>'+
 				/*'<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
 				'<option value="house">House</option></select></label>'+*/
 				'</form>'+
 				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, 'My city...', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png");
+				create_marker(mapCenter, 'My city...', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/red.png");
 				});
 			});
 										
@@ -136,7 +139,7 @@ $(document).ready(function() {
 
 		
 		//Create an infoWindow
-		var infowindow = new google.maps.InfoWindow();
+		var infowindow = new google.maps.InfoWindow({maxWidth: 300});
 		//set the content of infoWindow
 		infowindow.setContent(contentString[0]);
 
@@ -235,23 +238,41 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-h1.heading{width: 92%; padding:0px;margin: 0px 0px 10px 0px;margin-left: auto; text-align:left;font: 22px; font-family: Sans-Serif;}
+#heading{
+	padding-top:20px;
+	margin: 0px 0px 10px 0px;
+	margin-left: 30px; 
+	position: relative; 
+	z-index: 10; 
+	text-align:left;
+	font-size: 54px;
+	font-weight: bold;
+	color: #ffffff;
+	font-family: Sans-Serif;
+	/*-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;*/
+    text-shadow:
+   -1.5px -1.5px 0 #000,  
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+     1.5px 1.5px 0 #000;
+}
 
 /* width and height of google map */
 /*#google_map {width: 90%; height: 1000px;margin-top:auto;margin-left:auto;margin-right:auto;}*/
-html, body {width: 100%; height: 100%; font-family: sans-serif;}
-#google_map {width: 92%; height: 97%; margin-top:auto;margin-left:auto;}
+html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-family: sans-serif;}
+#google_map {width: 100%; height: 100%; position:absolute;z-index: 1}
 
 /* menu buttons */
 /*#menu-buttons {display: block; width: 170px;text-decoration: none; list-style-type: none; font: 18px; float: left;}*/
 .menu-button{
-    border-top: 1px solid #969696;
+   /* border-top: 1px solid #969696;*/
    background: #000000;
-   background: -webkit-gradient(linear, left top, left bottom, from(#545454), to(#000000));
-   background: -webkit-linear-gradient(top, #545454, #000000);
-   background: -moz-linear-gradient(top, #545454, #000000);
-   background: -ms-linear-gradient(top, #545454, #000000);
-   background: -o-linear-gradient(top, #545454, #000000);
+   background: -webkit-gradient(linear, left top, left bottom, from(#373737), to(#000000));
+   background: -webkit-linear-gradient(top, #373737, #000000);
+   background: -moz-linear-gradient(top, #373737 #000000);
+   background: -ms-linear-gradient(top, #373737, #000000);
+   background: -o-linear-gradient(top, #373737, #000000);
    padding: 5px 10px;
    /*margin: 5px 5px 5px 5px;*/
    -webkit-border-radius: 2px;
@@ -260,60 +281,146 @@ html, body {width: 100%; height: 100%; font-family: sans-serif;}
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
    box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #e3e3e3 !important;
+   /*text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   /*color: #e3e3e3 !important;*/
+   color: #ffffff;
    font-size: 16px;
    text-decoration: none;
    vertical-align: middle;
    min-height: 80px;
+   margin-right: 10px;
+   margin-left: 10px;
+   margin-bottom: 20px;
+   text-align: center;
+   padding-top: 25px;
+   font-weight: lighter;
    /*float: left;*/
    }
 .menu-button:hover {
-   border-top-color: #4f4f4f;
+   /*border-top-color: #4f4f4f;*/
    background: #4f4f4f;
    color: #ccc;
    text-decoration:none;
    }
 .menu-button:active {
-   border-top-color: #4a4a4a;
+   /*border-top-color: #4a4a4a;*/
    background: #4a4a4a;
    }
 
 .menu{
 	display: inline-block;
-	float:left;
-	width: 8%;
+	border-width: 8px;
+  	border-color: rgb( 255, 255, 255 );
+  	border-style: dashed;
+  	/*box-shadow: 2px 2px 4px #000000;*/
+	/*float:left;*/
+	width: 300px;
+	z-index: 10;
+	position: relative;
+	margin-left: 30px;
+	margin-top: 5px;
     
 }
+#leave-your-on-the-map{
+  font-size: 40px;
+  font-family: sans-serif;
+  color: rgb( 255, 255, 255 );
+  text-align: center;
+  /*position: absolute;*/
+  font-weight: bold;
+  z-index: 10;
+ /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;*/
+  text-shadow:
+  -1.5px -1.5px 0 #000,  
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+     1.5px 1.5px 0 #000;
 
-#favBtn{border: 3px solid #009900;}
-#betterBtn{border: 3px solid #990000;}
-#aboutBtn{border: 3px solid #000099;}
+}
+
+#mark{
+	font-size: 80px;
+	letter-spacing: 6px;
+  font-family: sans-serif;
+  color: rgb( 255, 255, 255 );
+  text-align: center;
+  /*position: absolute;*/
+  margin-top: -24px;
+  margin-bottom: -24px;
+  z-index: 10;
+  font-weight: bold;
+  /*-webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;*/
+  text-shadow:
+  -1.5px -1.5px 0 #000,  
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+     1.5px 1.5px 0 #000;
+
+}
+
+#rectangle_1 {
+  border-width: 4px;
+  border-color: rgb( 255, 255, 255 );
+  border-style: dashed;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb( 0, 0, 0 );
+  position: absolute;
+  left: -2px;
+  top: -4px;
+  width: 324px;
+  height: 628px;
+  z-index: 5;
+  text-shadow:
+  -1.5px -1.5px 0 #000,  
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+     1.5px 1.5px 0 #000;
+}
+
+.fav-marker {
+
+	background: #000000;
+
+
+}
+.gm-style-iw{padding: 0px; margin: 0px;background: #72a03e;}
+button:focus {outline:0;}
+#favBtn{border: 3px solid #72a03e;}
+#betterBtn{border: 3px solid #045b64;}
+#aboutBtn{border: 3px solid #6b2049;}
 
 /* Marker Edit form */
 .marker-edit label{display:block;margin-bottom: 5px;}
-.marker-edit label span {width: 100px;float: left;}
+.marker-edit label span {width: 1px;float: left;}
 .marker-edit label input, .marker-edit label select{height: 24px;}
-.marker-edit label textarea{height: 60px;}
-.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 60%;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
+.marker-edit label textarea{height: 100px;}
+.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 98%;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
 
 /* Marker Info Window */
 h1.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 18px "Trebuchet MS", Arial;border-bottom: 1px dotted #D8D8D8;}
-div.marker-info-win {max-width: 300px;margin-right: -20px;}
-div.marker-info-win p{padding: 0px;margin: 10px 0px 10px 0;}
+div.marker-info-win {margin-right: -20px; background: #72a03e;}
+div.marker-info-win p{padding: 0px;}
 div.marker-inner-win{padding: 5px;}
-button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 0);color: #00F;padding: 0px;text-decoration: underline;margin-right: 10px;cursor: pointer;
+button.save-marker, button.remove-marker{border: none;background: #909a91;color: #000;padding: 8px 16px 8px 16px; text-decoration: none; font:26px;margin-left: 30px; margin-right: -22px;cursor: pointer;
 }
+button.save-marker:hover, button.remove-marker:hover{background: #777675;}
+button.save-marker:active, button.remove-marker:active{background: #777675;}
 </style>
 </head>
-<body>             
-<h1 class="heading">The Stacks: Leave Your Mark</h1>
-<!--<div align="left">Leave Your Mark</div>-->
+<body> 
+<div id="google_map"></div>        
+<div id="heading">The Stacks</div>
 <div class="menu">
-<p><div class="menu-button" id = "favBtn">This is my Favorite Place</div></p>
-<p><div class="menu-button" id = "betterBtn">I Want this to be Better</div></p>
-<p><div class="menu-button" id = "aboutBtn">Tell us About Your City</div><p>
+<p><div id='leave-your-on-the-map'>LEAVE YOUR</div></p>
+<p><div id='mark'>MARK</div></p>
+<p><div id='leave-your-on-the-map'>ON THE MAP</div></p>
+<p><div class="menu-button" id = "favBtn">Your favorite place in Austin<div>----------------</div><div>Tu lugar favorito en Austin</div></div></p>
+<p><div class="menu-button" id = "betterBtn">I want this to be better<div>----------------</div><div>Quiero que esto sea mejor</div></div></p>
+<div class="menu-button" id = "aboutBtn">Tell us About Your City<div>----------------</div><div>Mu&#233;stranos tu ciudad</div></div>
 </div>
-<div id="google_map"></div>
+
 </body>
 </html>
