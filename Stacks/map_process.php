@@ -43,16 +43,18 @@ if($_POST) //run only if there's a post data
 	}
 	
 	$mName 		= filter_var($_POST["name"], FILTER_SANITIZE_STRING);
-	$mAddress 	= filter_var($_POST["address"], FILTER_SANITIZE_STRING);
+	$mDescription 	= filter_var($_POST["description"], FILTER_SANITIZE_STRING);
+	$mStyle = filter_var($_POST["winStyle"], FILTER_SANITIZE_STRING);
+	//$mMarkerTitle 	= filter_var($_POST["markerTitle"], FILTER_SANITIZE_STRING);
 	//$mType		= filter_var($_POST["type"], FILTER_SANITIZE_STRING);
 	
-	$results = $mysqli->query("INSERT INTO markers (name, address, lat, lng) VALUES ('$mName','$mAddress',$mLat, $mLng)");
+	$results = $mysqli->query("INSERT INTO markers (name, description, lat, lng, winStyle) VALUES ('$mName','$mDescription',$mLat, $mLng, '$mStyle')");
 	if (!$results) {  
 		  header('HTTP/1.1 500 Error: Could not create marker!'); 
 		  exit();
 	} 
 	
-	$output = '<h1 class="marker-heading">'.$mName.'</h1><p>'.$mAddress.'</p>';
+	$output = '<div class="saved-info saved-title">'.$mName.'</div><p><div class="saved-info saved-description">'.$mDescription.'</div></p>';
 	exit($output);
 }
 
@@ -80,9 +82,10 @@ while($obj = $results->fetch_object())
   $node = $dom->createElement("marker");  
   $newnode = $parnode->appendChild($node);   
   $newnode->setAttribute("name",$obj->name);
-  $newnode->setAttribute("address", $obj->address);  
+  $newnode->setAttribute("description", $obj->description);  
   $newnode->setAttribute("lat", $obj->lat);  
-  $newnode->setAttribute("lng", $obj->lng);  
+  $newnode->setAttribute("lng", $obj->lng); 
+  $newnode->setAttribute("winStyle", $obj->winStyle);
   //$newnode->setAttribute("type", $obj->type);	
 }
 

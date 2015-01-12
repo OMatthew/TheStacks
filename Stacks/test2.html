@@ -37,11 +37,13 @@ $(document).ready(function() {
 			//Load Markers from the XML File, Check (map_process.php)
 			$.get("map_process.php", function (data) {
 				$(data).find("marker").each(function () {
-					  var name 		= $(this).attr('name');
-					  var address 	= '<p>'+ $(this).attr('address') +'</p>';
+					  //var markerTitle = $(this).attr('markerTitle');
+					  var name 		= '<div class="saved-info saved-title">'+ $(this).attr('name')+'</div>';
+					  var description 	= '<p><div class="saved-info saved-description">'+ $(this).attr('description') +'</div></p>';
 					  //var type 		= $(this).attr('type');
 					  var point 	= new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
-					  create_marker(point, name, address, false, false, false, "http://maps.google.com/mapfiles/ms/micons/blue.png");
+					  var winStyle = $(this).attr('winStyle');
+					  create_marker(point, name, description, false, false, false, "http://maps.google.com/mapfiles/ms/micons/blue.png", winStyle);
 				});
 			});	
 			
@@ -75,7 +77,7 @@ $(document).ready(function() {
 				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, 'Your favorite place in Austin<div>----------------</div><div>Tu lugar favorito en Austin</div>', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png",'<div class="marker-info-win fav-win">');
+				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png",'green');
 				});
 			});
 		
@@ -92,7 +94,7 @@ $(document).ready(function() {
 				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, 'I want this to be better<div>----------------</div><div>Quiero que esto sea mejor</div>', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/blue.png",'<div class="marker-info-win better-win">');
+				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/blue.png",'blue');
 				});
 			});
 
@@ -109,16 +111,34 @@ $(document).ready(function() {
 				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, 'Tell us About Your City<div>----------------</div><div>Mu&#233;stranos tu ciudad</div>', EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/red.png",'<div class="marker-info-win about-win">');
+				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/red.png",'red');
 				});
 			});
 										
 	}
 	
 	//############### Create Marker Function ##############
-	function create_marker(MapPos, MapTitle, MapDesc,  InfoOpenDefault, DragAble, Removable, iconPath,winStyle)
+	function create_marker(MapPos, PlaceName, PlaceDesc, InfoOpenDefault, DragAble, Removable, iconPath,winStyle)
 	{	  	  		  
 		
+		if(winStyle == 'green')
+			{
+				var style = '<div class="marker-info-win fav-win">';
+				var engTitle = 'Your favorite place in Austin';
+				var spanTitle = 'Tu lugar favorito en Austin';
+			}
+		else if(winStyle == 'blue')
+			{
+				var style = '<div class="marker-info-win better-win">';
+				var engTitle = 'I want this to be better';
+				var spanTitle = 'Quiero que esto sea mejor';
+			}
+		else
+			{
+				var style = '<div class="marker-info-win about-win">';
+				var engTitle = 'Tell us about your city';
+				var spanTitle = 'Mu&#233;stranos tu ciudad';
+			}
 		//new marker
 		var marker = new google.maps.Marker({
 			position: MapPos,
@@ -130,12 +150,12 @@ $(document).ready(function() {
 		});
 		
 		//Content structure of info Window for the Markers
-		var contentString = $(winStyle+
+		var contentString = $(style+'<br>'+
+		'<div class="marker-heading">' + engTitle+ '<div>----------------</div>' + spanTitle + '</div>' +
 		'<div class="marker-inner-win"><span class="info-content">'+
-		'<div class="marker-heading">'+MapTitle+'</div>'+
-		MapDesc+ 
-		'</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>'+
-		'</div></div>');	
+		PlaceName+
+		PlaceDesc+ 
+		'</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></div>');
 
 		
 		//Create an infoWindow
@@ -156,16 +176,22 @@ $(document).ready(function() {
 		{
 			//add click listner to save marker button
 			google.maps.event.addDomListener(saveBtn, "click", function(event) {
+				//var mTitle = MarkerTitle;
 				var mReplace = contentString.find('span.info-content'); //html to be replaced after success
 				var mName = contentString.find('input.save-name')[0].value; //name input field value
 				var mDesc  = contentString.find('textarea.save-desc')[0].value; //description input field value
+				//console.log(mTitle);
+				//console.log(mName);
+				
+				
+				
 				//var mType = contentString.find('select.save-type')[0].value; //type of marker
 				
 				if(mName =='' || mDesc =='')
 				{
 					alert("Please enter Name and Description!");
 				}else{
-					save_marker(marker, mName, mDesc, mReplace); //call save marker function
+					save_marker(marker, mName, mDesc, mReplace, winStyle); //call save marker function
 				}
 			});
 		}
@@ -213,11 +239,12 @@ $(document).ready(function() {
 	}
 	
 	//############### Save Marker Function ##############
-	function save_marker(Marker, mName, mAddress, replaceWin)
+	function save_marker(Marker, mName, mDescription, replaceWin, winStyle)
 	{
 		//Save new marker using jQuery Ajax
 		var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
-		var myData = {name : mName, address : mAddress, latlang : mLatLang}; //post variables
+		var myData = {name : mName, description : mDescription, latlang : mLatLang, winStyle: winStyle}; //post variables
+		console.log(winStyle);
 		console.log(replaceWin);		
 		$.ajax({
 		  type: "POST",
@@ -238,6 +265,7 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
+
 #heading{
 	padding-top:20px;
 	margin: 0px 0px 10px 0px;
@@ -360,6 +388,28 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 }
 
+.saved-info{
+	background: #ffffff;
+	font-size: 14px;
+	
+	width: 93%;
+	margin:4px 0px 0px 5px;
+	padding-left: 5px;
+	border: 1px solid #000;
+	border-radius: 3px;
+}
+
+.saved-description{
+
+	min-height: 120px;
+}
+
+.saved-title{
+
+	min-height: 30px;
+
+}
+
 #rectangle_1 {
   border-width: 4px;
   border-color: rgb( 255, 255, 255 );
@@ -380,7 +430,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
      1.5px 1.5px 0 #000;
 }
 
-.gm-style-iw{padding: 0px; margin: 0px;}
+.gm-style-iw{min-width: 260px; padding: 0px; margin: 0px;}
 button:focus {outline:0;}
 #favBtn{border: 3px solid #72a03e;}
 #betterBtn{border: 3px solid #045b64;}
@@ -418,15 +468,17 @@ button:focus {outline:0;}
    vertical-align: middle;
    min-height: 80px;
    margin-right: 10px;
-   margin-left: 4px;
-   margin-bottom: 5px;
+   margin-left: 8px;
+   margin-bottom: 0px;
+   margin-top: -8px;
    text-align: center;
    padding-top: 25px;
    font-weight: lighter;
+   width: 88%;
 
 
 }
-div.marker-info-win {width: 120%; height:108%;margin: -10px 0px 0px -20px;}
+div.marker-info-win {width: 120%; height:106%;margin: -10px 0px 0px -20px;}
 div.fav-win {background: #72a03e;}
 div.better-win{background: #045b64;}
 div.about-win{background: #6b2049;}
