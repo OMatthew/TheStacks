@@ -7,7 +7,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-	var mapCenter = new google.maps.LatLng(30.2500, -97.7500); //Google map Coordinates
+	var mapStartCenter = new google.maps.LatLng(30.2500, -97.7500); //Google map Coordinates
 	var map;
 	
 	map_initialize(); // initialize google map
@@ -17,7 +17,7 @@ $(document).ready(function() {
 	{
 			var googleMapOptions = 
 			{ 
-				center: mapCenter, // map center
+				center: mapStartCenter, // map center
 				zoom: 12, //zoom level, 0 = earth view to higher value
 				maxZoom: 24,
 				minZoom: 0,
@@ -66,6 +66,7 @@ $(document).ready(function() {
 
 			$(document).ready(function() {
 				$("#favBtn").on('click', function(){
+				var mapCenter = map.getCenter();
 				//Edit form to be displayed with new marker
 				var EditForm = '<div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
@@ -83,6 +84,7 @@ $(document).ready(function() {
 		
 			$(document).ready(function() {
 				$("#betterBtn").on('click', function(){
+				var mapCenter = map.getCenter();
 				//Edit form to be displayed with new marker
 				var EditForm = '<p><div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
@@ -100,6 +102,7 @@ $(document).ready(function() {
 
 			$(document).ready(function() {
 				$("#aboutBtn").on('click', function(){
+				var mapCenter = map.getCenter();
 				//Edit form to be displayed with new marker
 				var EditForm = '<p><div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
@@ -244,8 +247,8 @@ $(document).ready(function() {
 		//Save new marker using jQuery Ajax
 		var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
 		var myData = {name : mName, description : mDescription, latlang : mLatLang, winStyle: winStyle}; //post variables
-		console.log(winStyle);
-		console.log(replaceWin);		
+		//console.log(winStyle);
+		//console.log(replaceWin);		
 		$.ajax({
 		  type: "POST",
 		  url: "map_process.php",
@@ -273,12 +276,13 @@ $(document).ready(function() {
 	position: relative; 
 	z-index: 10; 
 	text-align:left;
-	font-size: 54px;
+	font-size: 58px;
 	font-weight: bold;
 	color: #ffffff;
 	font-family: Sans-Serif;
 	/*-webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;*/
+    width: 13%;
     text-shadow:
    -1.5px -1.5px 0 #000,  
     1.5px -1.5px 0 #000,
