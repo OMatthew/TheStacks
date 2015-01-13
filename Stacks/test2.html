@@ -43,7 +43,8 @@ $(document).ready(function() {
 					  //var type 		= $(this).attr('type');
 					  var point 	= new google.maps.LatLng(parseFloat($(this).attr('lat')),parseFloat($(this).attr('lng')));
 					  var winStyle = $(this).attr('winStyle');
-					  create_marker(point, name, description, false, false, false, "http://maps.google.com/mapfiles/ms/micons/blue.png", winStyle);
+					  var mapPinURL = $(this).attr('mapPinURL');
+					  create_marker(point, name, description, false, false, false, mapPinURL, winStyle);
 				});
 			});	
 			
@@ -86,14 +87,14 @@ $(document).ready(function() {
 				$("#betterBtn").on('click', function(){
 				var mapCenter = map.getCenter();
 				//Edit form to be displayed with new marker
-				var EditForm = '<p><div class="marker-edit">'+
+				var EditForm = '<div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
 				'<label for="pName"><span></span><input type="text" name="pName" class="save-name" placeholder="Title" maxlength="40" /></label>'+
 				'<label for="pDesc"><span></span><textarea name="pDesc" class="save-desc" placeholder="Type your description" maxlength="150"></textarea></label>'+
 				/*'<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
 				'<option value="house">House</option></select></label>'+*/
 				'</form>'+
-				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
+				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
 				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/blue.png",'blue');
@@ -104,14 +105,14 @@ $(document).ready(function() {
 				$("#aboutBtn").on('click', function(){
 				var mapCenter = map.getCenter();
 				//Edit form to be displayed with new marker
-				var EditForm = '<p><div class="marker-edit">'+
+				var EditForm = '<div class="marker-edit">'+
 				'<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
 				'<label for="pName"><span></span><input type="text" name="pName" class="save-name" placeholder="Title" maxlength="40" /></label>'+
 				'<label for="pDesc"><span></span><textarea name="pDesc" class="save-desc" placeholder="Type your description" maxlength="150"></textarea></label>'+
 				/*'<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
 				'<option value="house">House</option></select></label>'+*/
 				'</form>'+
-				'</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
+				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
 				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/red.png",'red');
@@ -148,8 +149,8 @@ $(document).ready(function() {
 			map: map,
 			draggable:DragAble,
 			animation: google.maps.Animation.DROP,
-			title:"Hello World!",
-			icon: iconPath
+			//title:"Hello World!",
+			icon: iconPath,
 		});
 		
 		//Content structure of info Window for the Markers
@@ -158,7 +159,7 @@ $(document).ready(function() {
 		'<div class="marker-inner-win"><span class="info-content">'+
 		PlaceName+
 		PlaceDesc+ 
-		'</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button></div></div>');
+		'</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Delete Marker</button></div></div>');
 
 		
 		//Create an infoWindow
@@ -180,6 +181,7 @@ $(document).ready(function() {
 			//add click listner to save marker button
 			google.maps.event.addDomListener(saveBtn, "click", function(event) {
 				//var mTitle = MarkerTitle;
+				var mapPinURL = iconPath;
 				var mReplace = contentString.find('span.info-content'); //html to be replaced after success
 				var mName = contentString.find('input.save-name')[0].value; //name input field value
 				var mDesc  = contentString.find('textarea.save-desc')[0].value; //description input field value
@@ -194,7 +196,7 @@ $(document).ready(function() {
 				{
 					alert("Please enter Name and Description!");
 				}else{
-					save_marker(marker, mName, mDesc, mReplace, winStyle); //call save marker function
+					save_marker(marker, mName, mDesc, mReplace, winStyle, mapPinURL); //call save marker function
 				}
 			});
 		}
@@ -242,11 +244,11 @@ $(document).ready(function() {
 	}
 	
 	//############### Save Marker Function ##############
-	function save_marker(Marker, mName, mDescription, replaceWin, winStyle)
+	function save_marker(Marker, mName, mDescription, replaceWin, winStyle, mapPinURL)
 	{
 		//Save new marker using jQuery Ajax
 		var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
-		var myData = {name : mName, description : mDescription, latlang : mLatLang, winStyle: winStyle}; //post variables
+		var myData = {name : mName, description : mDescription, latlang : mLatLang, winStyle: winStyle, mapPinURL: mapPinURL}; //post variables
 		//console.log(winStyle);
 		//console.log(replaceWin);		
 		$.ajax({
@@ -256,7 +258,7 @@ $(document).ready(function() {
 		  success:function(data){
 				replaceWin.html(data); //replace info window with new html
 				Marker.setDraggable(false); //set marker to fixed
-				Marker.setIcon('http://maps.google.com/mapfiles/ms/micons/blue.png'); //replace icon
+				Marker.setIcon(mapPinURL); //replace icon
             },
             error:function (xhr, ajaxOptions, thrownError){
                 alert(thrownError); //throw any errors
@@ -268,7 +270,25 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-
+::-webkit-input-placeholder {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+:-moz-placeholder {
+    /* FF 4-18 */
+    font-family: sans-serif;
+    font-size: 12px;
+}
+::-moz-placeholder {
+    /* FF 19+ */
+    font-family: sans-serif;
+    font-size: 12px;
+}
+:-ms-input-placeholder {
+    /* IE 10+ */
+    font-family: sans-serif;
+    font-size: 12px;
+}
 #heading{
 	padding-top:20px;
 	margin: 0px 0px 10px 0px;
@@ -282,7 +302,7 @@ $(document).ready(function() {
 	font-family: Sans-Serif;
 	/*-webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;*/
-    width: 13%;
+    width: 330px;
     text-shadow:
    -1.5px -1.5px 0 #000,  
     1.5px -1.5px 0 #000,
@@ -434,7 +454,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
      1.5px 1.5px 0 #000;
 }
 
-.gm-style-iw{min-width: 260px; padding: 0px; margin: 0px;}
+.gm-style-iw{min-width: 260px; max-height: 340px;padding: 0px; margin: 0px;}
 button:focus {outline:0;}
 #favBtn{border: 3px solid #72a03e;}
 #betterBtn{border: 3px solid #045b64;}
@@ -444,7 +464,7 @@ button:focus {outline:0;}
 .marker-edit label{display:block;margin-bottom: 5px;}
 .marker-edit label span {width: 1px;float: left;}
 .marker-edit label input, .marker-edit label select{height: 30px;}
-.marker-edit label textarea{height: 120px;}
+.marker-edit label textarea{height: 120px; padding-top: 5px;}
 .marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 93%;margin:4px 0px 0px 5px;padding-left: 5px;border: 1px solid #000;border-radius: 3px;}
 
 /* Marker Info Window */
@@ -482,14 +502,45 @@ button:focus {outline:0;}
 
 
 }
-div.marker-info-win {width: 120%; height:106%;margin: -10px 0px 0px -20px;}
+div.marker-info-win {width: 120%; height:108%;margin: -10px 0px 0px -20px;}
 div.fav-win {background: #72a03e;}
 div.better-win{background: #045b64;}
 div.about-win{background: #6b2049;}
 div.marker-info-win p{padding: 0px;}
-div.marker-inner-win{padding: 5px;}
-button.save-marker, button.remove-marker{border: none;background: #777675;color: #000;padding: 14px 18px 14px 18px; text-decoration: none; font-size:15px;margin-left: 7px; 
-	margin-right: -2px;margin-bottom: -20px;margin-top:5px;cursor: pointer;
+div.marker-inner-win{padding: 5px;overflow: hidden;}
+button.save-marker{border: none;
+	background: #777675;
+	color: #000;
+	padding: 8px 8px 8px 8px;
+	height: 40px;
+	width: 180px;
+	text-decoration: none;
+	font-size:15px;
+	margin-left: 6px;
+	position: relative;
+	margin-top:5px;
+	cursor: pointer;
+
+}
+button.remove-marker{
+	border: none;
+	background: #777675;
+	color: #000;
+	padding: 8px 8px 8px 8px;
+	height: 40px;
+	width: 142px;
+	text-decoration: none; 
+	font-size:15px; 
+	
+	float: right;
+	margin-left: 7px;
+	margin-right: 11px;
+	margin-top:5px;
+	position: relative;
+	cursor: pointer;
+
+
+
 }
 button.save-marker:hover, button.remove-marker:hover{background: #909a91;}
 button.save-marker:active, button.remove-marker:active{background: #909a91;}

@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS `markers` (
   `lng` float(10,6) NOT NULL,
   `type` varchar(30) NOT NULL,
   `winStyle` varchar(20) NOT NULL,
+  `mapPinURL` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

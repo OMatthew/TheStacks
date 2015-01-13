@@ -45,10 +45,11 @@ if($_POST) //run only if there's a post data
 	$mName 		= filter_var($_POST["name"], FILTER_SANITIZE_STRING);
 	$mDescription 	= filter_var($_POST["description"], FILTER_SANITIZE_STRING);
 	$mStyle = filter_var($_POST["winStyle"], FILTER_SANITIZE_STRING);
+	$mPinURL = filter_var($_POST["mapPinURL"], FILTER_SANITIZE_STRING);
 	//$mMarkerTitle 	= filter_var($_POST["markerTitle"], FILTER_SANITIZE_STRING);
 	//$mType		= filter_var($_POST["type"], FILTER_SANITIZE_STRING);
 	
-	$results = $mysqli->query("INSERT INTO markers (name, description, lat, lng, winStyle) VALUES ('$mName','$mDescription',$mLat, $mLng, '$mStyle')");
+	$results = $mysqli->query("INSERT INTO markers (name, description, lat, lng, winStyle, mapPinURL) VALUES ('$mName','$mDescription',$mLat, $mLng, '$mStyle', '$mPinURL')");
 	if (!$results) {  
 		  header('HTTP/1.1 500 Error: Could not create marker!'); 
 		  exit();
@@ -86,6 +87,7 @@ while($obj = $results->fetch_object())
   $newnode->setAttribute("lat", $obj->lat);  
   $newnode->setAttribute("lng", $obj->lng); 
   $newnode->setAttribute("winStyle", $obj->winStyle);
+  $newnode->setAttribute("mapPinURL", $obj->mapPinURL);
   //$newnode->setAttribute("type", $obj->type);	
 }
 
