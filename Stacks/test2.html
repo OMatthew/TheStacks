@@ -79,7 +79,7 @@ $(document).ready(function() {
 				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/green.png",'green');
+				create_marker(mapCenter, "", EditForm, true, true, true, 'Images/favIcon.png','green');
 				});
 			});
 		
@@ -97,7 +97,7 @@ $(document).ready(function() {
 				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/blue.png",'blue');
+				create_marker(mapCenter, "", EditForm, true, true, true, 'Images/betterIcon.png','blue');
 				});
 			});
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
 				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, "", EditForm, true, true, true, "http://maps.google.com/mapfiles/ms/micons/red.png",'red');
+				create_marker(mapCenter, "", EditForm, true, true, true, 'Images/aboutIcon.png','red');
 				});
 			});
 										
@@ -151,6 +151,7 @@ $(document).ready(function() {
 			animation: google.maps.Animation.DROP,
 			//title:"Hello World!",
 			icon: iconPath,
+
 		});
 		
 		//Content structure of info Window for the Markers
