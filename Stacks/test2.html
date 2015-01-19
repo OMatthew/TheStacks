@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>The Stacks: Leave Your Mark</title>
+<link rel="shortcut icon" href="images/theStacks.png">
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUd4z57ZhhXzIDclL6vTSqHW_WY5aKDCY"></script>
 <script type="text/javascript">
@@ -10,6 +11,22 @@ $(document).ready(function() {
 	var mapStartCenter = new google.maps.LatLng(30.2500, -97.7500); //Google map Coordinates
 	var map;
 	
+	function setIdle(cb, seconds) {
+    var timer; 
+    var interval = seconds * 1000;
+    function refresh() {
+            clearInterval(timer);
+            timer = setTimeout(cb, interval);
+    	};
+    $(document).on('keypress, click', refresh);
+    refresh();
+	}
+
+setIdle(function() {
+    location.href = 'http://localhost:8888/';
+	}, 120);
+
+
 	map_initialize(); // initialize google map
 	
 	//############### Google Map Initialize ##############
