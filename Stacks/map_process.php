@@ -2,6 +2,11 @@
 //PHP 5 +
 
 // database settings 
+//$db_username = 'utw10077';
+//$db_password = 'theStacks6883';
+//$db_name = 'utw10077';
+//$db_host = 'utw10077.utweb.utexas.edu';
+
 $db_username = 'root';
 $db_password = 'root';
 $db_name = 'stacks';
