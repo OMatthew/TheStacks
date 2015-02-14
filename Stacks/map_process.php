@@ -1,16 +1,18 @@
+<!DOCTYPE html>
+<html>
 <?php
 //PHP 5 +
-
+error_reporting(E_ALL);
 // database settings 
-//$db_username = 'utw10077';
-//$db_password = 'theStacks6883';
-//$db_name = 'utw10077';
-//$db_host = 'utw10077.utweb.utexas.edu';
+$db_username = 'utw10077';
+$db_password = 'theStacks6883';
+$db_name = 'utw10077';
+$db_host = 'mysql.utweb.utexas.edu';
 
-$db_username = 'root';
-$db_password = 'root';
-$db_name = 'stacks';
-$db_host = 'localhost';
+//$db_username = 'root';
+//$db_password = 'root';
+//$db_name = 'stacks';
+//$db_host = 'localhost';
 
 //mysqli
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
@@ -97,3 +99,5 @@ while($obj = $results->fetch_object())
 }
 
 echo $dom->saveXML();
+?>
+</html>
