@@ -1,12 +1,17 @@
 html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-family: sans-serif;}
 
+#shortened_header{
+
+	height: 10%;
+	width: 100%;
+}
 
 #title1 {
 
 	font-size: 2.5vw;
 	font-weight: bold;
 	float: left;
-	margin: 1.75% 30px 0px 30px;
+	margin: 1.75% 30px 0px 2%;
 }
 
 #title2{
@@ -21,17 +26,37 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 }
 
-#stackLogo_header1 {
+#title3{
 
-	float: right;
-	margin: .8% 40px 0px 0px;
-	overflow: hidden;
-	height: 18%;
-	width: 10%;
+	color: Gray;
+	font-size: 1.75vw;
+	font-weight: lighter;
+	float: left;
+	letter-spacing: 10px;
+	margin: 1% 0px 0px 2%;
+
 
 }
 
-#stackLogo_header1 img{
+#stackLogo_header1 {
+
+	float: right;
+	margin: .2% 2% 0px 0px;
+	max-height: 19%;
+	max-width: 10%;
+
+}
+
+#stackLogo_header2 {
+
+	float: right;
+	margin: .2% 2% 1% 0px;
+	overflow: hidden;
+	max-height: 96%;
+	max-width: 10%;
+}
+
+#stackLogo_header1, #stackLogo_header2 img{
 
 	height: 100%;
 	width: 100%;
@@ -43,7 +68,6 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	position: fixed;
 	z-index: -10;
 	margin: 3% 00px 0px 5px;
-	
 	max-width: 29%;
 	max-height: 5%;
 }
@@ -103,5 +127,96 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	color: Gray;
 	margin: .25% 10% 2.5% 10%;
 	font-size: .9vw;
+
+}
+
+#socialMedia_btns {
+	position:fixed;
+	margin: 47.9% 0 0 9%;
+	max-width: 20%;
+	max-height: 4%;
+	font-weight: bold;
+	font-size: 1.35vw;
+
+
+}
+
+#socialMedia_btns img{
+
+	width: 8%;
+	height: 2%;
+	margin-right: 7.5%;
+
+}
+
+#media_container {
+
+	width: 100%;
+	height: 77%;
+	background-color: Gray;
+	z-index: 10;
+}
+
+iframe {
+	display: block;
+    width: 75%;
+    height: 99.75%;
+    margin-left: 11%;
+
+    background-color: #000;
+}
+
+#utility_btns{
+	position:fixed;
+	margin: 2% 0 0 2%;
+	max-width: 10%;
+	max-height: 4%;
+
+}
+
+#utility_btns img{
+
+	width: 8%;
+	height: 2%;
+	margin-right: 4%;
+
+
+}
+
+#tier2_paragraphs_container{
+	position:relative;
+	width:75%;
+	height:10%;
+	color: Gray;
+	font-size: 1vw; 
+	margin: 4% 0 0 11%;
+
+
+}
+
+#tier2_paragraphs_container div{
+	float:left;
+	max-width: 45%;
+	margin-right: 3%;
+
+
+}
+
+#tier2_logos {
+
+	position: relative;
+	z-index: -10;
+	margin: 2% 0px 0px 5px;
+	max-width: 29%;
+	max-height: 5%;
+
+
+}
+
+#tier2_logos img{
+
+	width: 22%;
+
+
 
 }
