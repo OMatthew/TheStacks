@@ -1,8 +1,12 @@
-html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-family: sans-serif;}
+html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-family: sans-serif; overflow: -moz-scrollbars-none;}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
 
 #shortened_header{
 
-	height: 10%;
+	height: 8%;
 	width: 100%;
 }
 
@@ -11,7 +15,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-size: 2.5vw;
 	font-weight: bold;
 	float: left;
-	margin: 1.75% 30px 0px 2%;
+	margin: 1.25% 30px 0px 2%;
 }
 
 #title2{
@@ -21,7 +25,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-weight: lighter;
 	float: left;
 	letter-spacing: 13px;
-	margin: 2.2% 20px 0px 0px;
+	margin: 1.7% 20px 0px 0px;
 
 
 }
@@ -33,32 +37,37 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-weight: lighter;
 	float: left;
 	letter-spacing: 10px;
-	margin: 1% 0px 0px 2%;
+	margin: .5% 0px 0px 2%;
 
 
 }
 
 #stackLogo_header1 {
 
-	float: right;
-	margin: .2% 2% 0px 0px;
-	max-height: 19%;
+	float:right;
+	margin: .1% 2% 0px 0px;
 	max-width: 10%;
-
+	max-height: auto;
 }
 
 #stackLogo_header2 {
 
 	float: right;
-	margin: .2% 2% 1% 0px;
+	display: inline-block;
+	margin: .1% 2% 1% 0px;
 	overflow: hidden;
-	max-height: 96%;
+	max-height: 98%;
 	max-width: 10%;
 }
 
-#stackLogo_header1, #stackLogo_header2 img{
+#stackLogo_header1 img{
 
-	height: 100%;
+	width: 100%;
+
+}
+
+#stackLogo_header2 img{
+
 	width: 100%;
 
 }
@@ -111,7 +120,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	width: 20%;
 	float: left;
 	margin-right: 3%;
-	margin-top: 3%;
+	margin-top: 2%;
 
 
 }
@@ -152,7 +161,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 #media_container {
 
 	width: 100%;
-	height: 77%;
+	height: 78%;
 	background-color: Gray;
 	z-index: 10;
 }
@@ -167,19 +176,23 @@ iframe {
 }
 
 #utility_btns{
-	position:fixed;
-	margin: 2% 0 0 2%;
-	max-width: 10%;
-	max-height: 4%;
-
+	float: left;
+	position: absolute;
+	margin: 2.75% 0 0 2%;
+	width: 14%;
 }
 
 #utility_btns img{
 
-	width: 8%;
-	height: 2%;
+	width: 28%;
+	height: auto;
 	margin-right: 4%;
 
+
+}
+#scroll_btn{
+
+	background-position: 0 10px;
 
 }
 
@@ -189,7 +202,7 @@ iframe {
 	height:10%;
 	color: Gray;
 	font-size: 1vw; 
-	margin: 4% 0 0 11%;
+	margin: 3.5% 0 0 14%;
 
 
 }

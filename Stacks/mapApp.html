@@ -22,10 +22,6 @@ $(document).ready(function() {
     refresh();
 	}
 
-setIdle(function() {
-    location.href = 'http://utw10077.utweb.utexas.edu/';
-	}, 18000);
-
 	function stopRKey(evt) { 
   var evt = (evt) ? evt : ((event) ? event : null); 
   var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
@@ -103,7 +99,7 @@ document.onkeypress = stopRKey;
 				'</div><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
 				//Drop a new Marker with our Edit Form
-				create_marker(mapCenter, "", EditForm, true, true, true, 'Images/favIcon.png','green');
+				create_marker(mapCenter, "", EditForm, true, true, true, 'Images/faveIcon.png','green');
 				});
 			});
 		
