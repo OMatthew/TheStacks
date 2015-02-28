@@ -9,23 +9,37 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	height: 8%;
 	width: 100%;
 }
+#title_big{
+	font-size: 4.5vw;
+	font-weight: bold;
+	line-height: 150%;
+	float: left;
+	margin: 1.25% 0px 0px .1%;
+}
+#title2_big{
+	float: left;
+	font-size: 1.4vw;
+	margin: 1.25% 0px 0px 34%;
+	font-weight: bold;
+
+}
 
 #title1 {
 
-	font-size: 2.5vw;
+	font-size: 2.25vw;
 	font-weight: bold;
 	float: left;
-	margin: 1.25% 30px 0px 2%;
+	margin: 1.25% 1% 0px 2%;
 }
 
 #title2{
 
 	color: Gray;
-	font-size: 2vw;
+	font-size: 1.75vw;
 	font-weight: lighter;
 	float: left;
 	letter-spacing: 13px;
-	margin: 1.7% 20px 0px 0px;
+	margin: 1.7% 1% 0px 0px;
 
 
 }
@@ -76,7 +90,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 	position: fixed;
 	z-index: -10;
-	margin: 3% 00px 0px 5px;
+	margin: 3% 0px 0px 5px;
 	max-width: 29%;
 	max-height: 5%;
 }
@@ -85,24 +99,28 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 	width: 22%;
 
-
-
 }
 
 #home {
-
+	overflow: scroll;
 	color: Gray;
 	font-size: 1vw;
 	position: fixed;
-	max-width: 19%;
-	margin: 9.5% 0px 0px 2%;
+	max-width: 24%;
+	margin: 8.25% 0px 0px 2%;
+	max-height: 72%;
+}
+
+#home img {
+
+	width: 98%;
 }
 
 #home_btns_container{
 
 	position: fixed;
-	margin: 9% 0px 0px 23%;
-	width: 80%;
+	margin: 12% 0px 0px 28%;
+	width: 78%;
 	height: 80%;
 }
 
@@ -124,10 +142,36 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 
 }
+
+.btn_box_burg{
+	-webkit-border-radius: 0px 40px 40px 40px;
+   	-moz-border-radius: 0px 40px 40px 40px;
+   	border-radius: 0px 40px 40px 40px;
+	-webkit-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
+	background: white;
+	border-top: 5vw solid #72174b;
+	height: 32%;
+	width: 20%;
+	float: left;
+	margin-right: 3%;
+	margin-top: 2%;
+
+}
 .btn_box div{
 	margin: 5% 10% 2.5% 10%;
 	color: black;
-	font-size: 1.1vw;
+	font-size: 1.25vw;
+	font-weight: bold;
+
+
+}
+
+.btn_box_burg div{
+	margin: 5% 10% 2.5% 10%;
+	color: black;
+	font-size: 1.25vw;
 	font-weight: bold;
 
 
@@ -138,10 +182,16 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-size: .9vw;
 
 }
+.btn_box_burg p{
+	color: Gray;
+	margin: .25% 10% 2.5% 10%;
+	font-size: .9vw;
+
+}
 
 #socialMedia_btns {
 	position:fixed;
-	margin: 47.9% 0 0 9%;
+	margin: 50% 0 0 9%;
 	max-width: 20%;
 	max-height: 4%;
 	font-weight: bold;
@@ -177,6 +227,24 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 }
 
+#tier2_socialMedia_btns_right {
+	position:absolute;
+	margin: 3.5% 0 0 75%;
+	max-width: 20%;
+	max-height: 4%;
+	font-weight: bold;
+	font-size: 1.35vw;
+
+
+}
+
+#tier2_socialMedia_btns_right img{
+
+	width: 8%;
+	height: 2%;
+	margin-right: 7.5%;
+
+}
 #media_container {
 
 	width: 100%;
@@ -209,8 +277,24 @@ iframe {
 
 
 }
-#scroll_btn{
 
+#utility_btns_home{
+	float: left;
+	position: absolute;
+	margin: 50% 0 0 2%;
+	width: 14%;
+}
+
+#utility_btns_home img{
+
+	width: 28%;
+	height: auto;
+	margin-right: 4%;
+
+
+}
+#scroll_btn{
+	z-index: 10;
 	background-position: 0 10px;
 
 }
@@ -249,6 +333,21 @@ iframe {
 
 	width: 22%;
 
+
+}
+
+#tier2_logos_middle {
+	position: fixed;
+	margin: 2% 0px 0px 32%;
+	max-width: 29%;
+	max-height: 5%;
+
+
+}
+
+#tier2_logos_middle img{
+
+	width: 22%;
 
 
 }

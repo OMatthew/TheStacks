@@ -2,8 +2,24 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <title>The Stacks</title>
 <link rel="icon" type="image/png" href="Images/theStacks.png" />
+<script type="text/javascript">
+var scrollToggle = false;
+function ToggleScroll() {
+
+    if (scrollToggle === true) {
+        document.getElementById('scroll_btn').src  = 'Images/scrollDown_btn.png';
+        location.href = "#intro";
+    } else {
+       document.getElementById('scroll_btn').src = 'Images/scrollUp_btn.png';
+       
+       location.href = "#keep_in_shape";
+    }
+    scrollToggle = !scrollToggle; 
+}
+</script>
 </head>
 <body>
 
@@ -12,31 +28,46 @@
 		<div id="logos_home"><img src="Images/logo_AustinPublicLibrary.png" />
 			<img src="Images/logo_OfficOfSus.png" /><img src="Images/logo_CSD.png" />
 				<img src="Images/logo_UTSA.png"></div>
-					<div id="stackLogo_header1"><img src="Images/theStacksHomeBtn.png" alt="The Stack Logo" /></div>
+					<div id="title_big">COME, EXPLORE, PARTICIPATE</div>
+						<div id="title2_big">TOUCH ONE TILE, SELECT AN APP<div style="color:#139480;display:inline-block">&nbsp;|&nbsp;</div><div style="color:Gray;display:inline-block">PRESIONA UN BOTON, ELIGE UNA APPLICACION</div></div>
+					<!--<div id="stackLogo_header1"><img src="Images/theStacksHomeBtn.png" alt="The Stack Logo" /></div>-->
 
 
 <div id="home">
-	<p><div style="color:black"><b>What are The Stacks?</b></div>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio. Proin et lacus ac eros pharetra sagittis non vel dolor. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula.
+	<p><!--<div style="color:black"><b>What are The Stacks?</b></div>-->
+		<div id="intro">The Stacks are an installation that engages library visitors in reflection and conversation about their neighborhoods and their city.</div>
 	</p>
-	<p><div style="color:black"><b>How to use The Stacks?</b></div>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio. Proin et lacus ac eros pharetra sagittis non vel dolor. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Utexas sit amet feugiat tellus, aliquet malesuada odio.
+	<p>
+		We ask you to consider the places you know and to share your thoughts, experiences, concerns, and questions.
+	</p>
+	<p>
+		<div style="color:black;font-size:1.5vw"><b>How to use The Stacks?</b></div>
+		<div style="color:black;font-size:1.5vw"><b>On the Screen</b></div>
+		<img src="Images/f1a.jpg">
+		<div style="color:black;font-size:1.5vw"><b>On the Chalkboard</b></div>
+		<img src="Images/f1a.jpg">
+		<div style="color:black;font-size:1.5vw"><b>Keep The Stacks in Shape</b></div>
+		<div id="keep_in_shape"><img src="Images/f1a.jpg"></div>
 	</p></div>
+<div id="utility_btns_home">
+	<!--<a href="home.html"><img src="Images/home_btn.png" /></a>-->
+	<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
 
+</div>
 <div id="socialMedia_btns">
 	<img src="Images/logo_twitter.png" height="40" width="40"><img src="Images/logo_facebook.png" height="40" width="40" /><img src="Images/logo_instagram.png" height="40" width="40"><img src="Images/logo_tumblr.png" height="40" width="40" /><br>
 	#thestacksaustin
 </div>
 
 <div id="home_btns_container">
-	<a href="leaveyourmark.html"><div class="btn_box"><div>Leave Your Mark On The Map</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div></a>
-	<div class="btn_box"><div>Environ</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
+	<a href="leaveyourmark.html"><div class="btn_box_burg"><div>Leave Your Mark On The Map</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div></a>
+	<a href="environ.html"><div class="btn_box"><div>Environ</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div></a>
 	<div class="btn_box"><div>App 3</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
 	<div class="btn_box"><div>App 4</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
 
 	<br>
 
-		<div class="btn_box"><div>App 5</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
+		<a href="speakUpAustin.html"><div class="btn_box_burg"><div>SpeakUp Austin</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div></a>
 		<div class="btn_box"><div>App 6</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
 		<div class="btn_box"><div>App 7</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
 		<div class="btn_box"><div>App 8</div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel fringilla lectus, quis consectetur est. Proin fermentum porta purus nec rhoncus. Proin tempor posuere est, imperdiet mattis ligula. Ut sit amet feugiat tellus, aliquet malesuada odio.</p></div>
