@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 CREATE TABLE IF NOT EXISTS `markers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,

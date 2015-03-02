@@ -51,14 +51,14 @@ document.onkeypress = stopRKey;
 				scaleControl: true, // enable scale control
 				mapTypeId: google.maps.MapTypeId.HYBRID // google map type
 			};
-		
-		   	map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);			
 			
+		   	map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);			
+			//alert("getting map!");
 			//Load Markers from the XML File, Check (map_process.php)
 			$.get("map_process.php", function (data) {
-				alert("getting data!");
+				//alert("getting data!");
 				$(data).find("marker").each(function () {
-					alert("getting markers!");
+					//alert("getting markers!");
 					  //var markerTitle = $(this).attr('markerTitle');
 					  var name 		= '<div class="saved-info saved-title">'+ $(this).attr('name')+'</div>';
 					  var description 	= '<div class="saved-info saved-description">'+ $(this).attr('description') +'</div>';

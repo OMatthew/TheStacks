@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <?php
 //PHP 5 +
 error_reporting(E_ALL);
@@ -100,4 +98,3 @@ while($obj = $results->fetch_object())
 
 echo $dom->saveXML();
 ?>
-</html>
