@@ -145,7 +145,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 #home_btns_container img{
 
-	margin: -50% 0 3.5% -2%;
+	margin: -40% 0 2.3% -1%;
 	width: 50%;
 
 
@@ -160,7 +160,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	-moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	background: white;
-	border-top: 5.25vw solid #139480;
+	border-top: 5.3vw solid #139480;
 	height: 32%;
 	width: 20%;
 	float: left;
@@ -178,7 +178,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	-moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	background: white;
-	border-top: 5.25vw solid #72174b;
+	border-top: 5.3vw solid #72174b;
 	height: 32%;
 	width: 20%;
 	float: left;
@@ -218,7 +218,8 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 #socialMedia_btns {
 	position:fixed;
-	margin: 49% 0 0 14%;
+	margin: 0 0 0 14%;
+	bottom: 3.5%;
 	max-width: 20%;
 	max-height: 4%;
 	font-weight: bold;
@@ -306,9 +307,9 @@ iframe {
 }
 
 #utility_btns_home{
-	float:left;
-	position: absolute;
-	margin: 48% 0 0 2%;
+	position: fixed;
+	margin: 0 0 0 2%;
+	bottom: 1.5%;
 	width: 14%;
 }
 
@@ -378,3 +379,4 @@ iframe {
 
 
 }
+
