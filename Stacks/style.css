@@ -38,7 +38,15 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-weight: bold;
 	font-family: "Century Gothic";
 	float: left;
-	margin: 1% 1% 0px 2%;
+	position: absolute;
+	margin: 1% 1% 0px 1%;
+}
+
+#title1 img {
+
+	width: 25%;
+
+
 }
 
 #title2{
@@ -46,9 +54,9 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	color: Gray;
 	font-size: 1.9vw;
 	font-weight: lighter;
-	font-family: "DINOT", "sans-serif";
+	font-family: "DINOT", "arial", "helvetica";
 	float: left;
-	letter-spacing: 13px;
+	letter-spacing: 11px;
 	margin: 1.5% 1% 0px 0px;
 
 
@@ -137,7 +145,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 #home_btns_container img{
 
-	margin: -40% 0 0 0;
+	margin: -50% 0 3.5% -2%;
 	width: 50%;
 
 
@@ -152,7 +160,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	-moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	background: white;
-	border-top: 5vw solid #139480;
+	border-top: 5.25vw solid #139480;
 	height: 32%;
 	width: 20%;
 	float: left;
@@ -170,7 +178,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	-moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.2);
 	background: white;
-	border-top: 5vw solid #72174b;
+	border-top: 5.25vw solid #72174b;
 	height: 32%;
 	width: 20%;
 	float: left;
@@ -210,7 +218,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 #socialMedia_btns {
 	position:fixed;
-	margin: 48.5% 0 0 14%;
+	margin: 49% 0 0 14%;
 	max-width: 20%;
 	max-height: 4%;
 	font-weight: bold;
@@ -300,7 +308,7 @@ iframe {
 #utility_btns_home{
 	float:left;
 	position: absolute;
-	margin: 47.5% 0 0 2%;
+	margin: 48% 0 0 2%;
 	width: 14%;
 }
 
