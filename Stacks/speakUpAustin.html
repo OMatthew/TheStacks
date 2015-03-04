@@ -3,38 +3,22 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script src="globalFunctions.js"></script>
 <title>The Stacks</title>
 <link rel="icon" type="image/png" href="Images/theStacks.png" />
 <script type="text/javascript">
 
-function setIdle(cb, seconds) {
-    var timer; 
-    var interval = seconds * 1000;
-    function refresh() {
-            clearInterval(timer);
-            timer = setTimeout(cb, interval);
-    	};
-    $(document).on('keypress, click', refresh);
-    refresh();
-	}
+setIdle(function() {
+	Alert.render("Are you still there? / &#191;Sigue usted ah&#237;?");
+    //location.href = 'http://utw10077.utweb.utexas.edu/home.html';
+	}, 600);
 
 setIdle(function() {
+	//alert("Are you still there?");
     location.href = 'http://utw10077.utweb.utexas.edu/home.html';
-	}, 1200);
+	}, 630);
 
 var scrollToggle = false;
-function ToggleScroll() {
-
-    if (scrollToggle === true) {
-        document.getElementById('scroll_btn').src  = 'Images/scrollDown_btn.png';
-        location.href = "#shortened_header";
-    } else {
-       document.getElementById('scroll_btn').src = 'Images/scrollUp_btn.png';
-       
-       location.href = "#tier2_logos";
-    }
-    scrollToggle = !scrollToggle; 
-}
 
 
 </script>
