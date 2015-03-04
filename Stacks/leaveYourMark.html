@@ -7,9 +7,25 @@
 <link rel="icon" type="image/png" href="Images/theStacks.png" />
 <script type="text/javascript">
 
+function setIdle(cb, seconds) {
+    var timer; 
+    var interval = seconds * 1000;
+    function refresh() {
+            clearInterval(timer);
+            timer = setTimeout(cb, interval);
+    	};
+    $(document).on('keypress, click', refresh);
+    refresh();
+	}
 setIdle(function() {
+	Alert.render("Are you still there? / &#191;Sigue usted ah&#237;?");
+    //location.href = 'http://utw10077.utweb.utexas.edu/home.html';
+	}, 4);
+
+setIdle(function() {
+	//alert("Are you still there?");
     location.href = 'http://utw10077.utweb.utexas.edu/home.html';
-	}, 18000);
+	}, 10);
 
 var scrollToggle = false;
 function ToggleScroll() {
@@ -25,11 +41,41 @@ function ToggleScroll() {
     scrollToggle = !scrollToggle; 
 }
 
+function CustomAlert(){
+    this.render = function(dialog){
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogoverlay = document.getElementById('dialogoverlay');
+        var dialogbox = document.getElementById('dialogbox');
+        dialogoverlay.style.display = "block";
+        dialogoverlay.style.height = winH+"px";
+        dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.display = "block";
+        document.getElementById('dialogboxhead').innerHTML = "Alert!";
+        document.getElementById('dialogboxbody').innerHTML = dialog;
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">Yes!</button>';
+    }
+	this.ok = function(){
+		document.getElementById('dialogbox').style.display = "none";
+		document.getElementById('dialogoverlay').style.display = "none";
+	}
+}
+var Alert = new CustomAlert();
 
 </script>
 </head>
 
 <body>
+
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>
 
 <div id="shortened_header">
 	<div id="title1"><img src="Images/Assets_title.png"></div>
@@ -40,7 +86,7 @@ function ToggleScroll() {
 </div>
 
 <div id="media_container">
-	<iframe src="mapApp.html"></iframe>
+	<iframe id="iframe" src="mapApp.html"></iframe>
 </div>
 
 <div id="title3">Leave Your Mark On The Map</div>
