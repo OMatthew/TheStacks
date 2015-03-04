@@ -38,7 +38,6 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 	font-weight: bold;
 	font-family: "Century Gothic";
 	float: left;
-	position: absolute;
 	margin: 1% 1% 0px 1%;
 }
 
@@ -86,7 +85,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 
 	float: right;
 	display: inline-block;
-	margin: .1% 2% 1% 0px;
+	margin: -4.1% 2% 1% 0px;
 	overflow: hidden;
 	max-height: 98%;
 	max-width: 10%;
@@ -237,8 +236,8 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 }
 
 #tier2_socialMedia_btns {
-	position:absolute;
-	margin: 7% 0 0 70%;
+	float:right;
+	margin: 2% 6% 0 0%;
 	max-width: 20%;
 	max-height: 4%;
 	font-weight: bold;
@@ -286,18 +285,31 @@ iframe {
     width: 75%;
     height: 99.75%;
     margin-left: 11%;
-
     background-color: #000;
 }
 
 #utility_btns{
 	float: left;
-	position: absolute;
-	margin: 2.75% 0 0 2%;
+	margin: 2.75% 0 0 -33%;
 	width: 14%;
 }
 
 #utility_btns img{
+
+	width: 28%;
+	height: auto;
+	margin-right: 4%;
+
+
+}
+
+#utility_btns2{
+	float: left;
+	margin: 2.75% 0 0 -12%;
+	width: 14%;
+}
+
+#utility_btns2 img{
 
 	width: 28%;
 	height: auto;
