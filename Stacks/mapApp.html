@@ -28,13 +28,39 @@ $(document).ready(function() {
   if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
 } 
 
-document.onkeypress = stopRKey; 
+document.onkeypress = stopRKey;
+
+window.addEventListener('DOMContentLoaded', function( e ){
+
+    // Get close button and insert it into streetView
+    // #button can be anyt dom element
+    
+
+    // Assumes map has been initiated 
+   
+
+    // Listen for click event on custom button
+    // Can also be $(document).on('click') if using jQuery
+    
+
+});
 
 	map_initialize(); // initialize google map
 	
 	//############### Google Map Initialize ##############
 	function map_initialize()
 	{
+			var streetViewOptions =
+		   	{
+		   		addressControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT},
+      			zoomControlOptions : { position: google.maps.ControlPosition.BOTTOM_LEFT},
+      			panControlOptions : { position: google.maps.ControlPosition.BOTTOM_LEFT},
+
+      			enableCloseButton : false,
+      			visible: false
+    		};
+    		var panorama = new google.maps.StreetViewPanorama(document.getElementById("google_map"), streetViewOptions);
+
 			var googleMapOptions = 
 			{ 
 				center: mapStartCenter, // map center
@@ -42,6 +68,7 @@ document.onkeypress = stopRKey;
 				maxZoom: 24,
 				minZoom: 0,
 				panControl: false,
+				streetView: panorama,
 				//mapTypeId: google.maps.MapTypeId.SATELLITE,
 				zoomControlOptions: {
 
@@ -52,7 +79,34 @@ document.onkeypress = stopRKey;
 				mapTypeId: google.maps.MapTypeId.HYBRID // google map type
 			};
 			
-		   	map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);			
+		   	map = new google.maps.Map(document.getElementById("google_map"), googleMapOptions);
+		   	var closeButton = document.querySelector('#closeSV_btn'),
+		   	controlPosition = google.maps.ControlPosition.RIGHT_TOP;
+		   	var streetView = map.getStreetView();
+
+    		streetView.controls[ controlPosition ].push( closeButton );
+
+		   	google.maps.event.addDomListener(closeButton, 'click', function(){
+        	streetView.setVisible(false);
+    		});
+
+		   	google.maps.event.addListener(streetView, 'visible_changed', function() {
+
+    			if (streetView.getVisible()) {
+    				
+        			document.getElementById("menu_container").style.display = 'none';
+        			document.getElementById("closeSV_btn").style.display = 'block';
+    				
+
+    			} else {
+    
+        			document.getElementById("menu_container").style.display = 'block';
+        			document.getElementById("closeSV_btn").style.display = 'none';
+
+    			}
+
+			});
+    		
 			//alert("getting map!");
 			//Load Markers from the XML File, Check (map_process.php)
 			$.get("map_process.php", function (data) {
@@ -445,7 +499,10 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
    /*border-top-color: #4a4a4a;*/
    background: #4a4a4a;
    }
+#menu_container{
 
+	display: block;
+}
 .menu{
 	display: inline-block;
 	border-width: 8px;
@@ -465,7 +522,7 @@ html, body {padding:0px;margin: 0px 0px 0px 0px;width: 100%; height: 100%; font-
 }
 
 #menu_btns{
-
+	display: block;
 	margin-top: 10%;
 
 }
@@ -710,12 +767,27 @@ a:link{
 a:visited{
 	color: #fff;
 }
-
+#closeSV_btn {
+	display: block;
+	background: none;
+	border: 0;
+	outline: 0;
+	position: absolute;
+    margin: -.25% 1% 0 0;
+    width: 5.5%;
+    float: left;
+    
+}
+#closeSV_btn img {
+	width: 100%;
+}
 </style>
 </head>
 <body> 
-<div id="google_map"></div>        
+<div id="google_map"></div>
+<button id="closeSV_btn"><img src="Images/home_btnFlipped.png"></button>
 <!--<div id="heading">The Stacks</div>-->
+<div id="menu_container">
 <div class="menu">
 <!--<div id='leave-your-on-the-map'>LEAVE YOUR</div>
 <div id='mark'>MARK</div>
@@ -725,6 +797,7 @@ a:visited{
 		<div class="menu-button" id = "betterBtn">I want this to be better<div>----------------</div><div>Quiero que esto sea mejor</div></div>
 		<div class="menu-button" id = "aboutBtn">Tell us About Your City<div>----------------</div><div>Mu&#233;stranos tu ciudad</div></div>
 	</div>
+</div>
 </div>
 <!--<div class='home-button'><a href="http://utw10077.utweb.utexas.edu/"><img src="Images/theStacksMapHomeBtn.png"><p>Return <br> Home</p></a></div>-->
 
