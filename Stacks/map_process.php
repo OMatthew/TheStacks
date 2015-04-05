@@ -7,13 +7,19 @@ $db_password = 'theStacks6883';
 $db_name = 'utw10077';
 $db_host = 'mysql.utweb.utexas.edu';
 
-$db_username = 'root';
-$db_password = 'root';
-$db_name = 'stacks';
-$db_host = 'localhost';
+//$db_username = 'root';
+//$db_password = 'root';
+//$db_name = 'stacks';
+//$db_host = 'localhost';
 
 //mysqli
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
+
+exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
 
 if (mysqli_connect_errno()) 
 {
