@@ -15,11 +15,34 @@ $db_host = 'mysql.utweb.utexas.edu';
 //mysqli
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
 
-exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
-exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
-exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
-exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
-exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+/*
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+//shell_exec('curl -v -X PURGE -D - "http://172.17.99.43"');
+shell_exec('curl -v -X PURGE -D - "http://128.83.21.174/*"');
+error_log("error test \n", 3, "cust_error_log.txt");
+error_log(shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"'), 3, "cust_error_log.txt");
+error_log(shell_exec('curl -v -X PURGE -D - "http://128.83.21.174/*"'), 3, "cust_error_log.txt");
+
+
+$url1 = 'http://utw10077.utweb.utexas.edu';
+$curl1 = curl_init();
+curl_setopt($curl1, CURLOPT_URL, $url1);
+curl_setopt($curl1, CURLOPT_FRESH_CONNECT, TRUE);
+
+curl_exec($curl1);
+
+$url1 = 'http://utw10077.utweb.utexas.edu/map_process.html';
+curl_exec($curl1);
+
+$url1 = 'http://utw10077.utweb.utexas.edu/mapApp.html';
+curl_exec($curl1);
+*/
+
 
 if (mysqli_connect_errno()) 
 {
@@ -30,6 +53,7 @@ if (mysqli_connect_errno())
 ################ Save & delete markers #################
 if($_POST) //run only if there's a post data
 {
+	//shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
 	//make sure request is comming from Ajax
 	$xhr = $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'; 
 	if (!$xhr){ 
