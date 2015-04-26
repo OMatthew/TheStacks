@@ -19,6 +19,115 @@ function ToggleScroll() {
     }
     scrollToggle = !scrollToggle; 
 }
+
+var english = true;
+function ToggleLanguage() {
+
+	if(english === true) {
+		document.getElementById('toggleLanguage_btn').src  = 'Images/spanish_btn.png';
+
+		document.getElementById('intro').innerHTML = '<p>The Stacks are an installation that engages library visitors' +
+													 ' in reflection and conversation about their neighborhoods and their city.</p>' +
+													 '<p>We ask you to consider the places you know and to share your thoughts,' +
+													 ' experiences, concerns, and questions.</p>';
+
+		document.getElementById('instructions').innerHTML = '<div style="color:black;font-size:1.5vw"><b>How to use The Stacks?</b></div>' +
+															'<div style="color:black;font-size:1.25vw"><b>On the Screen</b></div>' +
+															'<img src="Images/homeInfo1.png">' +
+															'<div style="color:black;font-size:1.25vw"><b>On the Chalkboard</b></div>' +
+															'<img src="Images/homeInfo2.png">' +
+															'<div style="color:black;font-size:1.25vw"><b>Keep The Stacks in Shape</b></div>' +
+															'<div id="keep_in_shape"><img src="Images/homeInfo3.png"></div>';
+
+		document.getElementById('app1_content').innerHTML = '<div id="box_title">Mark The Map</div>' +
+															'<p>Share your favorite places in Austin. Tell others about the places that need to be better. What would you do about them?' +
+															' Get to know what others think about Austin - all in one map!</p>';
+
+		document.getElementById('app2_content').innerHTML = '<div id="box_title">Whiteboard</div>' +
+															'<p>A digital whiteboard at your fingertips! Use the whiteboard to explain your idea, express yourself,' +
+															 ' or organize your thoughts.</p>';
+
+		document.getElementById('app3_content').innerHTML = '<div id="box_title">Environ</div>' +
+															'<p>Learn about energy sources and technologies, and their effect on the environment and the economy.' +
+															' Play Environ and try to balance the cost and environmental consequences of your energy policy decisions.</p>';
+
+		document.getElementById('app4_content').innerHTML = '<div id="box_title">Geoguessr</div>' +
+															'<p>Travel around the world, randomly, without leaving the library. Get to know random spaces around the world' +
+															' and try to guess where they are located.</p>';
+
+		document.getElementById('app5_content').innerHTML = '<div id="box_title">SpeakUp Austin</div>' +
+															'<p>Engage with the City of Austin and fellow citizen in sharing and discussing ideas for your city.' +
+															' SpeakUp is all about citizen generated ideas, don&#39;t miss the chance to get involved.</p>';
+
+		document.getElementById('app6_content').innerHTML = '<div id="box_title">CO<sub>2</sub> Footprints</div>' +
+															'<p>Learn how your lifestyle impacts the environment. Use this application to calculate your carbon' +
+															' footprint. Understand that changing small habits can greatly reduce your impact.</p>';
+
+		document.getElementById('app7_content').innerHTML = '<div id="box_title">App 7 TBD</div><p>TBD</p>';
+
+		document.getElementById('app8_content').innerHTML = '<div id="box_title">The Stacks Story</div>' +
+															'<p>Take an insider&#39;s look at the process of designing and building The Stacks, learn who was involved in' +
+															' the process, and where The Stacks are going in the future.</p>';
+
+	} else {
+
+		document.getElementById('toggleLanguage_btn').src  = 'Images/english_btn.png';
+
+		document.getElementById('intro').innerHTML = '<p>The Stacks son una instalaci&#243;n que involucra a los visitantes de la biblioteca' +
+													 ' en la reflexi&#243;n y conversaci&#243;n acerca de sus barrios y su ciudad.</p>' +
+													 '<p>Les pedimos que considere los lugares que usted conoce y compartir sus pensamientos,' +
+													 ' experiencias, preocupaciones y preguntas.</p>';
+
+		document.getElementById('instructions').innerHTML = '<div style="color:black;font-size:1.5vw"><b>C&#243;mo utilizar The Stacks?</b></div>' +
+															'<div style="color:black;font-size:1.25vw"><b>En la Pantalla</b></div>' +
+															'<img src="Images/homeInfo1.png">' +
+															'<div style="color:black;font-size:1.25vw"><b>En la Pizarra</b></div>' +
+															'<img src="Images/homeInfo2.png">' +
+															'<div style="color:black;font-size:1.25vw"><b>Mantenga The Stacks en Forma</b></div>'+
+															'<div id="keep_in_shape"><img src="Images/homeInfo3.png"></div>';
+
+		document.getElementById('app1_content').innerHTML = '<div id="box_title">Marque el Mapa</div>' +
+															'<p>Comparte tus lugares favoritos en Austin. D&#237;gale a otros acerca de los lugares que necesitan ser mejor.' + 
+															'¿Qu&#233; har&#237;a usted con ellos?' +
+															' Conozca lo que otros piensan acerca de Austin - todo en un mapa!</p>';
+
+		document.getElementById('app2_content').innerHTML = '<div id="box_title">Whiteboard</div>' +
+															'<p>A digital whiteboard at your fingertips! Use the whiteboard to explain your idea, express yourself,' +
+															 ' or organize your thoughts.</p>';
+
+		document.getElementById('app3_content').innerHTML = '<div id="box_title">Environ</div>' +
+															'<p>Learn about energy sources and technologies, and their effect on the environment and the economy.' +
+															' Play Environ and try to balance the cost and environmental consequences of your energy policy decisions.</p>';
+
+		document.getElementById('app4_content').innerHTML = '<div id="box_title">Geoguessr</div>' +
+															'<p>Travel around the world, randomly, without leaving the library. Get to know random spaces around the world' +
+															' and try to guess where they are located.</p>';
+
+		document.getElementById('app5_content').innerHTML = '<div id="box_title">SpeakUp Austin</div>' +
+															'<p>Engage with the City of Austin and fellow citizen in sharing and discussing ideas for your city.' +
+															' SpeakUp is all about citizen generated ideas, don&#39;t miss the chance to get involved.</p>';
+
+		document.getElementById('app6_content').innerHTML = '<div id="box_title">CO<sub>2</sub> Footprints</div>' +
+															'<p>Learn how your lifestyle impacts the environment. Use this application to calculate your carbon' +
+															' footprint. Understand that changing small habits can greatly reduce your impact.</p>';
+
+		document.getElementById('app7_content').innerHTML = '<div id="box_title">App 7 TBD</div><p>TBD</p>';
+
+		document.getElementById('app8_content').innerHTML = '<div id="box_title">The Stacks Story</div>' +
+															'<p>Take an insider&#39;s look at the process of designing and building The Stacks, learn who was involved in' +
+															' the process, and where The Stacks are going in the future.</p>';
+
+
+
+	}
+	english = !english;
+}
+
+window.onload = function()
+{
+	ToggleLanguage();
+}
+
 </script>
 </head>
 <body>
@@ -34,105 +143,48 @@ function ToggleScroll() {
 
 
 
-	<div id="home">
-	<p><!--<div style="color:black"><b>What are The Stacks?</b></div>-->
-		<div id="intro">The Stacks are an installation that engages library visitors in reflection and conversation about their neighborhoods and their city.</div>
-	</p>
+<div id="home">
+	<!--<div style="color:black"><b>What are The Stacks?</b></div>-->
+	<div id="intro"></div>
+
 	<p>
-		We ask you to consider the places you know and to share your thoughts, experiences, concerns, and questions.
+	<div id="instructions"></div>
 	</p>
-	<p>
-		<div style="color:black;font-size:1.5vw"><b>How to use The Stacks?</b></div>
-		<div style="color:black;font-size:1.25vw"><b>On the Screen</b></div>
-		<img src="Images/homeInfo1.png">
-		<div style="color:black;font-size:1.25vw"><b>On the Chalkboard</b></div>
-		<img src="Images/homeInfo2.png">
-		<div style="color:black;font-size:1.25vw"><b>Keep The Stacks in Shape</b></div>
-		<div id="keep_in_shape"><img src="Images/homeInfo3.png"></div>
-	</p></div>
+
+</div>
 	<div id="utility_btns_home">
-	<!--<a href="home.html"><img src="Images/home_btn.png" /></a>-->
-	<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
+
+		<img id="toggleLanguage_btn" src="Images/spanish_btn.png" onclick="ToggleLanguage()"/>
+		<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
 
 	</div>
 	<div id="socialMedia_btns">
-	<img src="Images/logo_twitter.png" height="40" width="40"><img src="Images/logo_facebook.png" height="40" width="40" /><img src="Images/logo_instagram.png" height="40" width="40"><img src="Images/logo_tumblr.png" height="40" width="40" /><br>
+	<img src="Images/logo_twitter.png" height="40" width="40"><img src="Images/logo_facebook.png" height="40" width="40" />
+	<img src="Images/logo_instagram.png" height="40" width="40"><img src="Images/logo_tumblr.png" height="40" width="40" />
+	<br>
 	#thestacksaustin
 	</div>
 
 
 <div id="home_btns_container">
 
-	<a href="leaveYourMark.html"><div class="btn_box_burg"><img src="Images/Assets_MAP.png"><div>Mark The Map</div>
-<p>Share your favorite places
-in Austin. Tell others about
-the places that need to be
-better. What would you do
-about them?
-Get to know what others
-think about Austin - all in
-one map!</p></div></a>
+	<a href="leaveYourMark.html"><div class="btn_box_burg"><img src="Images/Assets_MAP.png"><div id="app1_content"></div></div></a>
 
-	<a href="whiteboard.html"><div class="btn_box"><img src="Images/Assets_BOARD.png"><div>Whiteboard</div>
-<p>A digital whiteboard at your
-fingertips!
-Use the whiteboard to
-explain your idea, express
-yourself, or organize your
-thoughts.</p></div></a>
+	<a href="whiteboard.html"><div class="btn_box"><img src="Images/Assets_BOARD.png"><div id="app2_content"></div></div></a>
 
-	<a href="EnvironDemo.html"><div class="btn_box"><img src="Images/Assets_ENVIRON.png"><div>Environ</div>
-<p>Learn about energy sources
-and technologies, and their
-effect on the environment
-and the economy.
-Play Environ and try to
-balance the cost and
-environmental
-consequences of your
-energy policy decisions.</p></div></a>
-
+	<a href="EnvironDemo.html"><div class="btn_box"><img src="Images/Assets_ENVIRON.png"><div id="app3_content"></div></div></a>
 	
-	<a href="geoguessr.html"><div class="btn_box"><img src="Images/Assets_GEOGUSSR.png"><div>Geoguessr</div>
-<p>Travel around the world,
-randomly, without leaving
-the library.
-Get to know random
-spaces around the world
-and try to guess where they
-are located.</p></div></a>
+	<a href="geoguessr.html"><div class="btn_box"><img src="Images/Assets_GEOGUSSR.png"><div id="app4_content"></div></div></a>
 
 	<br>
 
-		<a href="speakUpAustin.html"><div class="btn_box_burg"><img src="Images/Assets_SPEAKUP.png"><div>SpeakUp Austin</div>
-<p>Engage with the City of
-Austin and fellow citizen in
-sharing and discussing
-ideas for your city.
-SpeakUp is all about citizen
-generated ideas, don't miss
-the chance to get involved.</p></div></a>
-		<a href="carbonFootprint.html"><div class="btn_box"><img src="Images/Assets_footprint.png"><div>CO<sub>2</sub> Footprints</div>
-<p>Learn how your lifestyle 
-	impacts the environment. 
-	Use this application to 
-	calculate your carbon 
-	footprint. Understand 
-	that changing small habits 
-	can greatly reduce your impact.
-</p></div></a>
+		<a href="speakUpAustin.html"><div class="btn_box_burg"><img src="Images/Assets_SPEAKUP.png"><div id="app5_content"></div></div></a>
 
-		<div class="btn_box"><img src="Images/testIcon.png"><div>App 7 TBD</div>
-<p>TBD</p></div>
+		<a href="carbonFootprint.html"><div class="btn_box"><img src="Images/Assets_footprint.png"><div id="app6_content"></div></div></a>
 
-		<a href="theStacksStory.html"><div class="btn_box"><img src="Images/Assets_stacksStory.png"><div>The Stacks Story</div>
-<p>Take an insider's look at 
-	the process of designing 
-	and building The Stacks, 
-	learn who was involved in 
-	the process, and where The 
-	Stacks are going in the future.
-</p></div></a>
+		<div class="btn_box"><img src="Images/testIcon.png"><div id="app7_content"></div></div>
+
+		<a href="theStacksStory.html"><div class="btn_box"><img src="Images/Assets_stacksStory.png"><div id="app8_content"></div></div></a>
 
 </div>
 
