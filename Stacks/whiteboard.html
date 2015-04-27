@@ -19,7 +19,20 @@ setIdle(function() {
 	}, 630);
 
 var scrollToggle = false;
+var prevent_bust = 0  
+    window.onbeforeunload = function() { prevent_bust++ }  
+    setInterval(function() {  
+      if (prevent_bust > 0 && !homeClicked) {  
+        prevent_bust -= 2  
+        window.top.location = 'http://utw10077.utweb.utexas.edu/whiteboard.html'  
+      }  
+    }, 1)
 
+ function ClickHome() {
+
+ 		prevent_bust = -100;
+ 		homeClicked = true;
+ }
 
 </script>
 </head>
@@ -41,7 +54,7 @@ var scrollToggle = false;
 <div id="title3">Whiteboard</div>
 
 <div id="utility_btns">
-	<a href="home.html"><img src="Images/home_btn.png" /></a>
+	<a href="home.html"><img src="Images/home_btn.png" onclick="ClickHome()"/></a>
 	<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
 
 </div>
