@@ -6,6 +6,37 @@
 <title>The Stacks</title>
 <link rel="icon" type="image/png" href="Images/theStacks.png" />
 <script type="text/javascript">
+/*
+$('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('instructions').animate({
+                 scrollTop: target.offset().top
+            }, 1000);
+            return false;
+        }
+    }
+});
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('instructions').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+*/
 var scrollToggle = false;
 function ToggleScroll() {
 
@@ -24,7 +55,7 @@ var english = true;
 function ToggleLanguage() {
 
 	if(english === true) {
-		document.getElementById('toggleLanguage_btn').src  = 'Images/spanish_btn.png';
+		document.getElementById('headerImage').src  = 'Images/Assets_headerEnglish.png';
 
 		document.getElementById('intro').innerHTML = '<p>The Stacks are an installation that engages library visitors' +
 													 ' in reflection and conversation about their neighborhoods and their city.</p>' +
@@ -71,7 +102,7 @@ function ToggleLanguage() {
 
 	} else {
 
-		document.getElementById('toggleLanguage_btn').src  = 'Images/english_btn.png';
+		document.getElementById('headerImage').src = 'Images/Assets_headerSpanish.png';
 
 		document.getElementById('intro').innerHTML = '<p>The Stacks son una instalaci&#243;n que involucra a los visitantes de la biblioteca' +
 													 ' en la reflexi&#243;n y conversaci&#243;n acerca de sus barrios y su ciudad.</p>' +
@@ -131,13 +162,13 @@ window.onload = function()
 </script>
 </head>
 <body>
-<div id="title1"><img src="Images/Assets_title.png"></div>
+<div id="title1"><img src="Images/Assets_title2.png"></div>
 <!--<div id="title1">The Stacks</div>
-	<div id="title2">AUSTIN</div>-->
+	<div id="title2">AUSTIN</div>
 		<div id="logos_home"><img src="Images/logo_AustinPublicLibrary.png" />
 			<img src="Images/logo_OfficOfSus.png" /><img src="Images/logo_CSD.png" />
-				<img src="Images/logo_UTSA.png"></div>
-					<div id="title_big"><img src="Images/ASSETS_HEADER.png"></div><!--<div id="title_big">COME, EXPLORE, PARTICIPATE</div>
+				<img src="Images/logo_UTSA.png"></div>-->
+<div id="title_big"><img id="headerImage" src="Images/Assets_headerEnglish.png"></div><!--<div id="title_big">COME, EXPLORE, PARTICIPATE</div>
 						<div id="title2_big">TOUCH ONE TILE, SELECT AN APP<div style="color:#139480;display:inline-block">&nbsp;|&nbsp;</div><div style="color:Gray;display:inline-block">PRESIONA UN BOTON, ELIGE UNA APPLICACION</div></div>-->
 					<!--<div id="stackLogo_header1"><img src="Images/theStacksHomeBtn.png" alt="The Stack Logo" /></div>-->
 
@@ -152,12 +183,20 @@ window.onload = function()
 	</p>
 
 </div>
-	<div id="utility_btns_home">
+<div id="utility_btns_home">
+		<div class="btnAndTxt_container">
+			<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
+			<div id="btn_text">Scroll Down</div>
+		</div>
+		<div class="btnAndTxt_container" style="margin-left: 8%">
+			<img id="toggleLanguage_btn" src="Images/englishSpanish_btn.png" onclick="ToggleLanguage()"/>
+			<div id="btn_text">English/Espa&#241;ol</div>
+		</div>
+</div>
+		
+	
+	
 
-		<img id="toggleLanguage_btn" src="Images/spanish_btn.png" onclick="ToggleLanguage()"/>
-		<img id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
-
-	</div>
 	<div id="socialMedia_btns">
 	<img src="Images/logo_twitter.png" height="40" width="40"><img src="Images/logo_facebook.png" height="40" width="40" />
 	<img src="Images/logo_instagram.png" height="40" width="40"><img src="Images/logo_tumblr.png" height="40" width="40" />
