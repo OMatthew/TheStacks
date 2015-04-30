@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script src="globalFunctions.js"></script>
+<title>The Stacks</title>
+<link rel="icon" type="image/png" href="Images/theStacks.png" />
+<script type="text/javascript">
+
+setIdle(function() {
+	Alert.render("Are you still there? / &#191;Sigue usted ah&#237;?");
+    //location.href = 'http://utw10077.utweb.utexas.edu/home.html';
+	}, 600);
+
+setIdle(function() {
+	//alert("Are you still there?");
+    location.href = 'http://utw10077.utweb.utexas.edu/home.html';
+	}, 630);
+
+var scrollToggle = false;
+var prevent_bust = 0  
+    window.onbeforeunload = function() { prevent_bust++ }  
+    setInterval(function() {  
+      if (prevent_bust > 0 && !homeClicked) {  
+        prevent_bust -= 2  
+        window.top.location = 'http://utw10077.utweb.utexas.edu/whiteboard.html'  
+      }  
+    }, 1)
+
+ function ClickHome() {
+
+ 		prevent_bust = -100;
+ 		homeClicked = true;
+ }
+
+</script>
+</head>
+
+<body>
+
+<div id="shortened_header">
+	<div id="title1_tier2"><img src="Images/Assets_title.png"></div>
+<!--<div id="title1">The Stacks</div>
+	<div id="title2">AUSTIN</div>-->
+	<div id="stackLogo_header2"><img src="Images/theStacksHomeBtn.png" alt="The Stack Logo"></div>
+
+</div>
+
+<div id="media_container">
+	<span style ="width: 50%; height: 100%; float:left; margin-left: 5%"><iframe src="https://docs.google.com/forms/d/1onyJJyJApo39a_xOjBMwrEJScKkVNIYZCfn7zIb1m7o/viewform?embedded=true" width="760" height="500" frameborder="0">Loading...</iframe></span>
+	<span style ="width: 50%; height: 100%; float:left; margin-top: -.85%; margin-left: -12.5%"><iframe src="https://docs.google.com/forms/d/1RH_BZkBfi-CyjyAB9OsvvsyPbQxEPcmpugtjkO7sQZE/viewform?embedded=true" width="760" height="500" frameborder="0">Loading...</iframe></span>
+</div>
+
+<div id="title3">Feedback Loop</div>
+
+<div id="utility_btns">
+	<div class="btnAndTxt_container_tier2">
+		<a href="home.html"><img src="Images/home_btn.png" /></a>
+		<div id="btn_text">Home</div>
+	</div>
+	<!--
+	<div class="btnAndTxt_container_tier2" style="margin-left: 8%">
+		<img style="margin-left: 10%" id="scroll_btn" src="Images/scrollDown_btn.png" onclick="ToggleScroll()"/>
+		<div id="btn_text_tier2">Scroll Down</div>
+	</div>
+	-->
+</div>
+<!--
+<div id="tier2_paragraphs_container">
+	<p><span style="color:black"><b>Instructions</b></span><br>
+		Use the touchscreen as an extension of the Stack's chalkboard.<br> 
+		1) Tap "Start Drawing."<br>
+		2) Tap the top left icon to select a color to draw with. The default color is black, change it at the start, otherwise you won't be able to see your work.<br>
+		3) Change the width of your strokes by tapping the second button down in the top left corner of the application window.<br>
+		4) Switch between drawing, erase, and type mode by tapping the third button down in the top left corner of the application window.<br>
+		5) Please, do not attempt to login or share the boards using the last two buttons in the menu.<br>
+</p>
+	<p><span style="color:black"><b>Instrucciones</b></span><br>
+		Utiliza la pantalla como una extensi&#243;n de los pizarrones de The Stacks.<br>
+		1) Presione "Start Drawing."<br>
+		2) Presione el primer bot&#243;n en la parte superior izquierda de la ventana de aplicaci&#243;n. Seleccione el color que desea utilizar. El color por defecto de la aplicaci&#243;n es negro, cambie su color antes de comenzar a dibujar, de otra forma no podr&#225; diferenciar su trabajo del fondo negro.<br>
+		3) Cambie el grueso de sus pinceladas al presionar el segundo bot&#243;n del men&#250; en la parte superior izquierda de la ventana de aplicaci&#243;n.<br>
+		4) Seleccione entre modo dibujo, borrador y texto al presionar el tercer bot&#243;n del men&#250; en la parte superior izquierda de la ventana de aplicaci&#243;n.<br>
+		5) Por favor, no intente login o compartir su dibujo utilizando los &#250;ltimos dos botones del men&#250;.</p>
+</div>
+-->
+<div id="tier2_socialMedia_btns_right">
+	<img src="Images/logo_twitter.png" height="40" width="40"><img src="Images/logo_facebook.png" height="40" width="40" /><img src="Images/logo_instagram.png" height="40" width="40"><img src="Images/logo_tumblr.png" height="40" width="40" /><br>
+	#thestacksaustin
+</div>
+
+<div id="tier2_logos_middle">
+	<img src="Images/logos2.png" />
+</div>
+
+</body>
+
+</html>
