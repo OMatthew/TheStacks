@@ -286,7 +286,7 @@ iframe {
 	display: block;
     width: 75%;
     height: 99.75%;
-    margin-left: 11%;
+    margin-left: 12.25%;
     background-color: #000;
 }
 
@@ -323,7 +323,9 @@ iframe {
 }
 .btnAndTxt_container {
 	margin: 0;
-	width: 32%;
+	padding: 0;
+	max-width: 31%;
+	height: auto;
 	float: left;
 	text-align: center;
 }
@@ -367,12 +369,27 @@ iframe {
 	width:76%;
 	color: Gray;
 	font-size: 1vw; 
-	margin: 4% 0 1% 16%;
+	margin: 4% 0 1% 17%;
+
+}
+
+#tier2_paragraphs_container_long{
+	width:76%;
+	color: Gray;
+	font-size: .78vw; 
+	margin: 4% 0 1% 17%;
 
 }
 
 
 #tier2_paragraphs_container p{
+	float:left;
+	max-width: 41%;
+	margin-right: 5%;
+
+}
+
+#tier2_paragraphs_container_long p{
 	float:left;
 	max-width: 41%;
 	margin-right: 5%;
