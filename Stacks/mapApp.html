@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>The Stacks: Leave Your Mark</title>
+<title>The Stacks: Map App</title>
+<!--<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">-->
 <link rel="shortcut icon" href="Images/theStacks.png">
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUd4z57ZhhXzIDclL6vTSqHW_WY5aKDCY"></script>
@@ -24,6 +26,7 @@ document.onkeypress = stopRKey;
 	//############### Google Map Initialize ##############
 	function map_initialize()
 	{
+			
 			var streetViewOptions =
 		   	{
 		   		addressControlOptions: {position: google.maps.ControlPosition.BOTTOM_LEFT},
@@ -770,7 +773,7 @@ a:visited{
 }
 </style>
 </head>
-<body> 
+<body>
 <div id="google_map"></div>
 <button id="closeSV_btn"><img src="Images/home_btnFlipped.png"></button>
 <!--<div id="heading">The Stacks</div>-->

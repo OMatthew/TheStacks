@@ -7,6 +7,10 @@ $db_password = 'theStacks6883';
 $db_name = 'utw10077';
 $db_host = 'mysql.utweb.utexas.edu';
 
+//header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0"); // needs to run in mapApp.html?
+//header("Cache-Control: post-check=0, pre-check=0", false);
+//header("Pragma: no-cache");
+
 //$db_username = 'root';
 //$db_password = 'root';
 //$db_name = 'stacks';
@@ -16,8 +20,12 @@ $db_host = 'mysql.utweb.utexas.edu';
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
 
 /*
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"'); // needs to run in mapApp.html?
 shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
-shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
+
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/mapApp.html"');
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/mapApp.html"');
+
 shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
 shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
 shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/*"');
@@ -41,9 +49,11 @@ curl_exec($curl1);
 
 $url1 = 'http://utw10077.utweb.utexas.edu/mapApp.html';
 curl_exec($curl1);
+
+shell_exec('curl -v -X PURGE -D - "http://utw10077.utweb.utexas.edu/mapApp.html"');
+shell_exec('curl -v -X PURGE -D - "http://172.17.99.32"');
+shell_exec('curl -v -X PURGE -D - "http://172.17.99.33"');
 */
-
-
 if (mysqli_connect_errno()) 
 {
 	header('HTTP/1.1 500 Error: Could not connect to db!'); 
